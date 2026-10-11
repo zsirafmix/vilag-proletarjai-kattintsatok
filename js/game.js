@@ -313,7 +313,7 @@ function bossAttackTick(){
 }
 /* ---------- finale ---------- */
 function startFinale(){
-  G.phase='finale';G.ft=0;G.flags={};for(const bb of G.bubbles.slice())popBubble(bb,null);G.atkObj=null;G.proj.forEach(p=>{if(p.body)Composite.remove(engine.world,p.body);});G.proj=[];
+  G.phase='finale';G.ft=0;G.flags={defeatedHP:G.boss.weak.map(w=>w.hp)};for(const bb of G.bubbles.slice())popBubble(bb,null);G.atkObj=null;G.proj.forEach(p=>{if(p.body)Composite.remove(engine.world,p.body);});G.proj=[];
   G.levelScore+=G.shots*10000;G.score+=G.shots*10000;save.unlocked=8;save.ngMax=Math.max(save.ngMax||0,save.ng+1);const L=LEVELS[G.li];
   if(G.levelScore>(save.best[L.id]||0))save.best[L.id]=G.levelScore;if(G.score>save.bestTotal)save.bestTotal=G.score;persist();SFX.music(false);
 }
